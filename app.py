@@ -7,10 +7,13 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template('json_data.html')
+    return render_template('index.html')
 
 @app.route("/jsondata", methods=['GET'])
 def jsonData():
+    # print(request.form['mayank'])
+    # return render_template('json_data.html')
+    # print(request.form.RFWID)
     reqData = request.json
     id = reqData['id'],
     benchmarkType = reqData['benchmarkType']
@@ -21,9 +24,8 @@ def jsonData():
     dataType = reqData['dataType']
     dataAnalytics= reqData['dataAnalytics']
     data = processData(id,benchmarkType,workloadMetric,batchUnit,batchID,batchSize,dataType,dataAnalytics)
-    # batch_object = RFW_response(id, bench_type, metric, batch_unit, batch_id, batch_size)
-    # result = batch_object.send_json_data_results()
     return data
+    return render_template('json_data.html')
 
 @app.route("/protodata")
 def protoData():

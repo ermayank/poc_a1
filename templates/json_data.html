@@ -16,47 +16,139 @@
       crossorigin="anonymous"
     />
 
-    <title>Json Form</title>
+    <title>Json Form and Data</title>
   </head>
   <body>
     <div class="jumbotron">
       <h1 class="display-5 text-center">
         Assignment - 1 : Programming on the Cloud
       </h1>
+    </div>
+    <div class="row">
+      <div class="col-md-6 px-5">
+        <h3>Enter Request Parameters</h3>
+        <form method="GET" action="/jsondata">
+          <div class="form-group row">
+            <label for="RFWID" class="col-sm-2 col-form-label">RFW ID</label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="RFWID"
+                name="mayank"
+              />
+              <small class="form-text text-muted">Id For the RFW</small>
+            </div>
+          </div>
 
-      <h1 class="display-6 text-center">Form to get Json Data</h1>
+          <div class="form-group row">
+            <label for="benchmarkType" class="col-sm-2 col-form-label"
+              >Benchmark Type</label
+            >
+            <div class="col-sm-10">
+              <select class="form-control" id="benchmarkType">
+                <option value="DVD">DVD</option>
+                <option value="NDBench">NDBench</option>
+              </select>
+              <small class="form-text text-muted"
+                >Type of data DVD or NDBench</small
+              >
+            </div>
+          </div>
 
-      <form>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            placeholder="Enter email"
-          />
-          <small id="emailHelp" class="form-text text-muted"
-            >We'll never share your email with anyone else.</small
-          >
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Password"
-          />
-        </div>
-        <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-          <label class="form-check-label" for="exampleCheck1"
-            >Check me out</label
-          >
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+          <div class="form-group row">
+            <label for="workloadMetric" class="col-sm-2 col-form-label"
+              >Workload Metric</label
+            >
+            <div class="col-sm-10">
+              <select class="form-control" id="workloadMetric">
+                <option value="CPUUtilization_Average">
+                  CPU Utilization Average
+                </option>
+                <option value="NetworkIn_Average">Network In Average</option>
+                <option value="NetworkOut_Average">Network Out Average</option>
+                <option value="MemoryUtilization_Average">
+                  Memory Utilization Average
+                </option>
+                <option value="Final_Target">Final Target</option>
+              </select>
+              <small id="emailHelp" class="form-text text-muted"
+                >Which data Column to request</small
+              >
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="batchUnit" class="col-sm-2 col-form-label"
+              >Batch Unit</label
+            >
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="batchUnit" />
+              <small id="emailHelp" class="form-text text-muted"
+                >The number of samples contained in each batch.</small
+              >
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="batchID" class="col-sm-2 col-form-label"
+              >Batch ID</label
+            >
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="batchID" />
+              <small id="emailHelp" class="form-text text-muted"
+                >Such as the 1stor 2ndor... 5th Batch (without th)</small
+              >
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="batchSize" class="col-sm-2 col-form-label"
+              >Batch Size</label
+            >
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="batchSize" />
+              <small id="emailHelp" class="form-text text-muted"
+                >Such as the how many batches to return, 5 means 5 batches to
+                return</small
+              >
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="dataType" class="col-sm-2 col-form-label"
+              >Data Type</label
+            >
+            <div class="col-sm-10">
+              <select class="form-control" id="dataType">
+                <option value="training">Training</option>
+                <option value="testing">Testing</option>
+              </select>
+              <small id="emailHelp" class="form-text text-muted"
+                >Training data or Testing data</small
+              >
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="dataAnalytics" class="col-sm-2 col-form-label"
+              >Data Analytics</label
+            >
+            <div class="col-sm-10">
+              <select class="form-control" id="dataAnalytics">
+                <option value="avg">Average</option>
+                <option value="min">Minimum</option>
+                <option value="max">Maximum</option>
+              </select>
+              <small id="emailHelp" class="form-text text-muted"
+                >We'll never share your email with anyone else.</small
+              >
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Send ></button>
+        </form>
+      </div>
+      <div class="col-md-5 px-5 border">mayajk</div>
     </div>
 
     <!-- Optional JavaScript -->
