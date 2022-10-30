@@ -52,7 +52,7 @@ def processData(id,benchmarkType,workloadMetric,batchUnit,batchID ,batchSize,dat
         case _:
             dataAnalysis = calculatePercentile(finalData, int(dataAnalytics))
 
-    
+
     finalRes = {
         "RFWID":id,
         "lastBatchID": lastBatchId,

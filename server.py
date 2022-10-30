@@ -1,7 +1,7 @@
 from flask import Flask,request,json,render_template
 import protoformat_pb2
 
-from src.app import processData
+from app import processData
 
 app = Flask(__name__)
 
@@ -72,4 +72,4 @@ def protoData():
     return searlized_batch_res
 
 if __name__ =="__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=False, port=5000)
