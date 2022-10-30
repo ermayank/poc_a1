@@ -1,0 +1,10 @@
+{
+  "id": "1112",
+  "benchmarkType": "DVD",
+  "workloadMetric": "MemoryUtilization_Average",
+  "batchUnit": 3,
+  "batchID": 2,
+  "batchSize": 3,
+  "dataType": "training",
+  "dataAnalytics": "avg"
+}
