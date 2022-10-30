@@ -1,6 +1,5 @@
 import pandas as pd
-import math
-import json
+import numpy as np
 
 #Function to calculate Average of the Data
 def calculateAvg(data):
@@ -13,6 +12,17 @@ def calculateMin(data):
 #Function to calculate Minimum value of the Data
 def calculateMax(data):
     return max(data)
+
+#Function to calculate Standard Deviation of the Data
+def calculateStd(data):
+    avg = calculateAvg(data)
+    var = sum((x-avg)**2 for x in data) / len(data)
+    std = var**0.5
+    return std
+
+#Function to calculate percentile
+def calculatePercentile(data, value):
+    np.percentile(data, value)
 
 
 def processData(id,benchmarkType,workloadMetric,batchUnit,batchID ,batchSize,dataType ,dataAnalytics):
@@ -29,7 +39,7 @@ def processData(id,benchmarkType,workloadMetric,batchUnit,batchID ,batchSize,dat
     startingPoint = ((batchID - 1) * batchUnit)
     endingPoint = startingPoint + (batchSize * batchUnit)
     finalData = df.iloc[startingPoint:endingPoint].tolist()
-    
+
     match dataAnalytics:
         case "avg":
             dataAnalysis = calculateAvg(finalData)
@@ -37,8 +47,10 @@ def processData(id,benchmarkType,workloadMetric,batchUnit,batchID ,batchSize,dat
             dataAnalysis = calculateMin(finalData)
         case "max":
             dataAnalysis = calculateMax(finalData)
+        case "std":
+            dataAnalysis = calculateStd(finalData)
         case _:
-            dataAnalysis = calculateAvg(finalData)
+            dataAnalysis = calculatePercentile(finalData, int(dataAnalytics))
 
     
     finalRes = {

@@ -9,8 +9,8 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route("/jsondata", methods=['GET'])
-def jsonData():
+@app.route("/jsondata", methods=['GET', 'POST'])
+def jsonData():      
     reqData = request.json
     id = reqData['id'],
     benchmarkType = reqData['benchmarkType']
@@ -22,13 +22,32 @@ def jsonData():
     dataAnalytics= reqData['dataAnalytics']
     data = processData(id,benchmarkType,workloadMetric,batchUnit,batchID,batchSize,dataType,dataAnalytics)
     return data
+
+
+@app.route("/jsonform", methods=['GET', 'POST'])
+def jsonForm():
+    if request.method == "POST":
+       formData = request.form
+       id = formData.get("RFWID")
+       benchmarkType = formData.get("benchmarkType")
+       workloadMetric =formData.get('workloadMetric')
+       batchUnit = int(formData.get('batchUnit'))
+       batchID = int(formData.get('batchID'))
+       batchSize = int(formData.get('batchSize'))
+       dataType = formData.get('dataType')
+       dataAnalytics= formData.get('dataAnalytics')
+       data = processData(id,benchmarkType,workloadMetric,batchUnit,batchID,batchSize,dataType,dataAnalytics)
+       print(data)
+       return data
+   
+    # return data
     return render_template('json_data.html')
+
 
 @app.route("/protodata")
 def protoData():
     reqData = protoformat_pb2.dataRequest.FromString(request.data)
     batch_response = protoformat_pb2.dataResponse()
-
     #Parse Request
     id = reqData.RFW_ID,
     id = ''.join(id[0])
@@ -39,7 +58,6 @@ def protoData():
     batchSize = reqData.batch_size
     dataType = reqData.data_type
     dataAnalytics= reqData.data_analytics
-    # print(id,benchmarkType,workloadMetric,batchUnit,batchID,batchSize,dataType,dataAnalytics)
 
     #Process data
     result = processData(id,benchmarkType,workloadMetric,batchUnit,batchID,batchSize,dataType,dataAnalytics)
@@ -51,11 +69,7 @@ def protoData():
         batch_response.batch_data.append(x)
     batch_response.data_analytics = result['dataAnalytics']
     searlized_batch_res = batch_response.SerializeToString()
-    print(searlized_batch_res)
-
-    mayank = protoformat_pb2.dataResponse.FromString(searlized_batch_res)
-    print(mayank)
-    return "Data is sent"
+    return searlized_batch_res
 
 if __name__ =="__main__":
     app.run(debug=True)

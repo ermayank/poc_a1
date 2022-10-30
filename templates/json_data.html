@@ -27,16 +27,11 @@
     <div class="row">
       <div class="col-md-6 px-5">
         <h3>Enter Request Parameters</h3>
-        <form method="POST" action="/jsondata">
+        <form method="POST" action="/jsonform">
           <div class="form-group row">
             <label for="RFWID" class="col-sm-2 col-form-label">RFW ID</label>
             <div class="col-sm-10">
-              <input
-                type="text"
-                class="form-control"
-                id="RFWID"
-                name="mayank"
-              />
+              <input type="text" class="form-control" name="RFWID" />
               <small class="form-text text-muted">Id For the RFW</small>
             </div>
           </div>
@@ -46,7 +41,7 @@
               >Benchmark Type</label
             >
             <div class="col-sm-10">
-              <select class="form-control" id="benchmarkType">
+              <select class="form-control" name="benchmarkType">
                 <option value="DVD">DVD</option>
                 <option value="NDBench">NDBench</option>
               </select>
@@ -61,7 +56,7 @@
               >Workload Metric</label
             >
             <div class="col-sm-10">
-              <select class="form-control" id="workloadMetric">
+              <select class="form-control" name="workloadMetric">
                 <option value="CPUUtilization_Average">
                   CPU Utilization Average
                 </option>
@@ -83,8 +78,8 @@
               >Batch Unit</label
             >
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="batchUnit" />
-              <small id="emailHelp" class="form-text text-muted"
+              <input type="text" class="form-control" name="batchUnit" />
+              <small class="form-text text-muted"
                 >The number of samples contained in each batch.</small
               >
             </div>
@@ -95,9 +90,9 @@
               >Batch ID</label
             >
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="batchID" />
-              <small id="emailHelp" class="form-text text-muted"
-                >Such as the 1stor 2ndor... 5th Batch (without th)</small
+              <input type="text" class="form-control" name="batchID" />
+              <small class="form-text text-muted"
+                >Such as the 1st or 2nd or... 5th Batch (without th)</small
               >
             </div>
           </div>
@@ -107,7 +102,7 @@
               >Batch Size</label
             >
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="batchSize" />
+              <input type="text" class="form-control" name="batchSize" />
               <small id="emailHelp" class="form-text text-muted"
                 >Such as the how many batches to return, 5 means 5 batches to
                 return</small
@@ -120,7 +115,7 @@
               >Data Type</label
             >
             <div class="col-sm-10">
-              <select class="form-control" id="dataType">
+              <select class="form-control" name="dataType">
                 <option value="training">Training</option>
                 <option value="testing">Testing</option>
               </select>
@@ -135,7 +130,7 @@
               >Data Analytics</label
             >
             <div class="col-sm-10">
-              <select class="form-control" id="dataAnalytics">
+              <select class="form-control" name="dataAnalytics">
                 <option value="avg">Average</option>
                 <option value="min">Minimum</option>
                 <option value="max">Maximum</option>
@@ -148,7 +143,7 @@
           <button type="submit" class="btn btn-primary">Send</button>
         </form>
       </div>
-      <div class="col-md-5 px-5 border">mayajk</div>
+      <div class="col-md-5 px-5 border">Use this Form to send JSON Data</div>
     </div>
 
     <!-- Optional JavaScript -->
