@@ -24,7 +24,7 @@ batch_request_data.batch_size =batchSize
 batch_request_data.data_type =dataType
 batch_request_data.data_analytics =dataAnalytics
 
-res = requests.get("http://127.0.0.1:5000/protodata", headers={'Content-Type': 'application/protobuf'},data=batch_request_data.SerializeToString())
+res = requests.get("http://3.87.203.248/protodata", headers={'Content-Type': 'application/protobuf'},data=batch_request_data.SerializeToString())
 print("Request sent for Serealised Data : ")
 print(batch_request_data.SerializeToString())
 print("\n -----------------------------------------------")
