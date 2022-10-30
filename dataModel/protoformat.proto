@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+message dataRequest{
+  string RFW_ID =1;
+  string benchmark_type = 2;
+  string work_metric =3;
+  int32 batch_unit =4;
+  int32 batch_ID= 5;
+  int32 batch_size =6;
+  string data_type =7;
+  string data_analytics =8;
+}
+
+message dataResponse{
+  string RFW_ID = 1;
+  int32 last_batch_ID = 2;
+  repeated double batch_data =3 [packed=true]; 
+  double data_analytics =4;
+}
